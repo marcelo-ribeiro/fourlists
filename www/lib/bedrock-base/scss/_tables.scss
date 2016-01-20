@@ -1,0 +1,62 @@
+@import "variables";
+@import "mixins";
+
+.table {
+  position: relative;
+  width: 100%;
+  margin-top: $table-margin-top;
+  margin-bottom: $table-margin-bottom;
+  border: $table-border;
+  border-collapse: separate;
+  white-space: nowrap;
+  font-size: $table-font-size;
+  background-color: #fff;
+
+  tbody {
+    tr {
+      position: relative;
+      transition: $transition;
+
+      &.is-selected {
+        background-color: $table-selection-color;
+      }
+
+      &:hover {
+        background-color: $table-hover-color;
+      }
+
+      &:last-of-type td {
+        border-bottom-width: 0;
+      }
+
+    }
+  }
+
+  td, th {
+    position: relative;
+    height: $table-row-height;
+    padding: 0 1em;
+    vertical-align: middle;
+    box-sizing: border-box;
+  }
+
+  th {
+    @include text-overflow();
+    font-size: $table-header-font-size;
+    color: $table-header-color;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+
+  td {
+    border-bottom: $table-dividers;
+  }
+}
+
+// Zebra-striping
+//
+.table-striped {
+  > tbody > tr:nth-of-type(odd) {
+    background-color: $table-accent-color;
+  }
+}

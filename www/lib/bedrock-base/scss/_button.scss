@@ -1,0 +1,113 @@
+.btn {
+  display: inline-flex;
+  display: -moz-box; // Hack to firefox - display inline-flex not showing icon and text inline
+  padding: 0 $button-padding-horizontal;
+  height: $button-height;
+  line-height: $button-line-height;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  font-family: inherit;
+  font-size: $button-font-size;
+  color: $button-color;
+  border: none;
+  text-decoration: none;
+  outline: none;
+  appearance: none;
+  vertical-align: middle;
+  background: transparent;
+  border-radius: $button-border-radius;
+  transition: $button-transition;
+  user-select: none;
+  cursor: pointer;
+
+  &::-moz-focus-inner {
+    border: 0;
+  }
+
+  & * {
+    pointer-events: none;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: rgba(#000,0.1);
+  }
+
+  &:active {
+    background-color: rgba(#000,0.2);
+  }
+
+  &[disabled] {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  &__block {
+    width: 100%;
+  }
+
+  &__default {
+    background-color: $button-background;
+    @include elevation($elevation-3);
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: $button-background-hover;
+    }
+
+    &:active {
+      @include elevation($elevation-1);
+    }
+  }
+
+  &__primary {
+    @extend .btn__default;
+    color: $button-primary-color;
+    background-color: $button-primary-background;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: $button-primary-background-hover;
+    }
+  }
+
+  &__accent {
+    @extend .btn__default;
+    color: $button-accent-color;
+    background-color: $button-accent-background;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: $button-accent-background-hover;
+    }
+  }
+
+  &__icon {
+    padding: 0;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+  }
+
+  &__small {
+    height: $button-height-small;
+    font-size: $button-font-size-small;
+    text-transform: uppercase;
+  }
+
+  &__large {
+    height: $button-height-large;
+    font-size: $button-font-size-large;
+  }
+
+}
+
+.btn--icon {
+  & ~ .btn--label {
+    margin-left: 0.5em;
+  }
+}

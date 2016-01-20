@@ -1,0 +1,91 @@
+<div class="header">
+
+
+  <h1 class="header--title">FourLists</h1>
+
+
+  <div class="header--group">
+    <button class="header--btn" ui-sref="profile">
+      <i class="material-icons">person</i>
+    </button>
+  </div>
+
+
+</div>
+
+
+<div class="main">
+
+
+  <div class="lists">
+
+    <div class="lists--col" ng-repeat="list in vm.lists">
+
+      <section class="list list__{{list.id}}" ng-class="{ 'opened': list.opened }">
+
+        <div class="click_area" ng-click="vm.openList(list)"></div>
+
+        <header class="header">
+
+          <div class="header--group">
+            <button class="header--btn" ng-click="vm.closeList(list)">
+              <i class="material-icons">&#xe5c4;</i>
+            </button>
+          </div>
+
+          <form class="header--group  form_add_task" name="formAddTask" ng-submit="vm.addTask()" novalidate="">
+            <input type="text" id="inputTitle{{list.id}}" ng-model="vm.task.title" placeholder="Add task" required>
+
+            <button type="submit" class="header--btn" ng-disabled="formAddTask.$invalid">
+              <i class="material-icons" ng-class="{'md-inactive': formAddTask.$invalid}" ng-hide="vm.processingAdd">&#xe5ca;</i>
+              <i class="material-icons  animated rotate" ng-show="vm.processingAdd">&#xE1af;</i>
+            </button>
+          </form>
+
+        </header>
+
+        <div class="main">
+
+          <div class="list--title">{{ list.title }}</div>
+
+          <div class="loading" ng-if="vm.processing">Carregando...</div>
+
+          <div class="list--item" ng-repeat="item in vm.tasks" ng-if="item.listId == list.id" ng-click="vm.openList(list)">
+
+            <div
+            class="list--item--label"
+            ng-keyup="vm.saveTask(item, $event)"
+            contenteditable="true">{{item.title}}</div>
+
+            <button
+            class="list--item--button  btn btn__icon"
+            ng-click="vm.removeTask(item)"
+            ng-show="list.opened">
+            <i class="material-icons md-dark md-24">cancel</i>
+          </button>
+
+        </div>
+
+      </div>
+
+      <!-- <footer class="footer"> -->
+          <!-- <div class="footer--item">
+            <button class="footer--btn  btn btn__block" ng-click="vm.openList(list)">
+              <i class="material-icons">&#xe8f4;</i>
+            </button>
+          </div> -->
+          <!-- <div class="footer--item">
+            <button class="footer--btn  btn btn__block" ng-click="vm.openList(list, true);">
+              <i class="material-icons">&#xe147;</i>
+            </button>
+          </div> -->
+          <!-- </footer> -->
+
+        </section><!-- End - List -->
+
+      </div><!-- End - Col -->
+
+    </div><!-- End - Lists -->
+
+
+  </div>
