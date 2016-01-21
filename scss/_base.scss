@@ -59,7 +59,7 @@ body {
   margin: 0;
   padding: 14px 1rem;
   // align-self: center;
-  font-weight: 500;
+  font-weight: 300;
   font-size: $header_title_font_size;
   color: $text_light_color;
 }
@@ -115,7 +115,7 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
-  padding: 8px 8px 0;
+  padding: 0 8px 8px;
 }
 
 .lists--row {
@@ -129,7 +129,7 @@ body {
   width: 50%;
   height: 50%;
   float: left;
-  padding: 0 8px 16px;
+  padding: 8px;
 }
 
 .list {
@@ -142,7 +142,7 @@ body {
   // margin: 2px;
   box-sizing: border-box;
   // border-radius: 3px;
-  box-shadow: 0 1px 3px $black-150;
+  box-shadow: 0 1px 3px $black-200;
 
   .header {
     display: none;
@@ -233,6 +233,7 @@ body {
   min-height: 32px;
   line-height: 1.125rem;
   font-size: 1rem;
+  border-bottom: 1px solid $black-100;
 }
 
 // .list--item--checkbox {
@@ -246,7 +247,6 @@ body {
   align-self: flex-end;
   padding-bottom: 0.5rem;
   cursor: text;
-  border-bottom: 1px solid $black-100;
 
   &:focus {
     border-bottom-color: $text_medium_color;
@@ -259,6 +259,10 @@ body {
 
 .list--item--button {
   visibility: hidden;
+
+  // .list.opened & {
+  //   visibility: visible;
+  // }
 }
 
 

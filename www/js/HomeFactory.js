@@ -4,6 +4,7 @@
   function HomeFactory( $rootScope, APP_SETTINGS, $firebaseArray ) {
 
     var groupId = $rootScope.user.id;
+    console.log(groupId);
 
     var tasksRef = new Firebase(APP_SETTINGS.FIREBASE_URL).child("tasks");
 

@@ -21,16 +21,16 @@
 
     <div class="lists--col" ng-repeat="list in vm.lists">
 
-      <section class="list list__{{list.id}}" ng-class="{ 'opened': list.opened }">
+      <section class="list list__{{list.id}}" ui-sref-active="opened">
 
-        <div class="click_area" ng-click="vm.openList(list)"></div>
+        <a class="click_area" ui-sref=".list({ listId: list.id })"></a>
 
         <header class="header">
 
           <div class="header--group">
-            <button class="header--btn" ng-click="vm.closeList(list)">
+            <a class="header--btn" ui-sref="lists">
               <i class="material-icons">&#xe5c4;</i>
-            </button>
+            </a>
           </div>
 
           <form class="header--group  form_add_task" name="formAddTask" ng-submit="vm.addTask()" novalidate="">
@@ -50,7 +50,7 @@
 
           <div class="loading" ng-if="vm.processing">Carregando...</div>
 
-          <div class="list--item" ng-repeat="item in vm.tasks" ng-if="item.listId == list.id" ng-click="vm.openList(list)">
+          <div class="list--item" ng-repeat="item in vm.tasks" ng-if="item.listId == list.id">
 
             <div
             class="list--item--label"
@@ -59,8 +59,7 @@
 
             <button
             class="list--item--button  btn btn__icon"
-            ng-click="vm.removeTask(item)"
-            ng-show="list.opened">
+            ng-click="vm.removeTask(item)">
             <i class="material-icons md-dark md-24">cancel</i>
           </button>
 

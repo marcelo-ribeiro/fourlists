@@ -39,6 +39,7 @@
 
       vm.tasks.$loaded()
       .then( function() {
+        console.log('tasks: ', vm.tasks);
       })
       .catch( function(err) {
         console.error("Error:", err);
@@ -47,7 +48,6 @@
         vm.processing = false;
       });
 
-      console.log('tasks: ', vm.tasks);
     };
 
     vm.addTask = function () {
@@ -92,21 +92,22 @@
 
 
     vm.openList = function( list, focus ) {
-      if ( list.opened )
-        return false;
+      // if ( list.opened )
+      //   return false;
 
-      list.opened = true;
+      // list.opened = true;
 
-      vm.listId = list.id;
+      // vm.listId = list.id;
+      // console.log(list);
 
-      $state.go('.list');
+      // $state.go( '.list', { listId: list.id } );
     };
 
     vm.closeList = function( list ) {
-      if ( !list.opened )
-        return false;
+      // if ( !list.opened )
+      //   return false;
 
-      list.opened = false;
+      // list.opened = false;
 
       $state.go('^');
     };

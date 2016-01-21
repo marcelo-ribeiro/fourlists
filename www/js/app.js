@@ -4,7 +4,7 @@ angular.module('fourlists', ['ionic', 'firebase'])
   FIREBASE_URL: 'https://fourlists.firebaseio.com'
 })
 
-.run( function( $rootScope, $ionicPlatform, $state, UserFactory ) {
+.run( function( $rootScope, $window, $ionicPlatform, $state, UserFactory ) {
 
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
@@ -21,14 +21,16 @@ angular.module('fourlists', ['ionic', 'firebase'])
       StatusBar.styleDefault();
     }
 
-    UserFactory.getAuth();
+  });
 
-    $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
-      if ( $rootScope.user == null && toState.name != 'login' ) {
-        $state.go('login');
-        event.preventDefault();
-      }
-    });
+  UserFactory.getAuth();
+
+  $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+
+    if ( $rootScope.user == null && toState.name != 'login' ) {
+      event.preventDefault();
+      $window.location = '#/login';
+    }
 
   });
 
@@ -50,7 +52,10 @@ angular.module('fourlists', ['ionic', 'firebase'])
     controller: 'HomeController as vm'
   })
   .state('lists.list', {
-    url: "list"
+    url: "list/:listId",
+    params: {
+      listId: { value: '', squash: true }
+    }
   })
 
   .state('profile', {

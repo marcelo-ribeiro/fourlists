@@ -33,6 +33,7 @@
       $rootScope.user = null;
       localStorage.removeItem("firebase:session::fourlists");
       console.log('User is logged out');
+      $state.go('login');
     };
 
 
@@ -42,6 +43,7 @@
       console.log('authData', authData);
 
       if (authData) {
+        console.log("Authenticated user with uid:", authData.uid);
         setUser(authData);
       }
       else {
@@ -51,8 +53,6 @@
 
 
     function setUser(authData) {
-      console.log("Authenticated user with uid:", authData.uid);
-
       $rootScope.user = {
         id: authData.uid,
         name: authData.google.displayName
