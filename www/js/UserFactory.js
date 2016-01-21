@@ -18,7 +18,7 @@
 
 
     function googleLogin () {
-      authObj.$authWithOAuthRedirect("google")
+      authObj.$authWithOAuthPopup("google")
         .then(function(authData) {
           setUser(authData);
         })
