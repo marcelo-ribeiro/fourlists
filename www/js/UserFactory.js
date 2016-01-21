@@ -18,9 +18,12 @@
 
 
     function googleLogin () {
-      authObj.$authWithOAuthPopup("google")
+      authObj.$authWithOAuthRedirect("google")
         .then(function(authData) {
           setUser(authData);
+        })
+        .then(function() {
+          // Never called because of page redirect
         })
         .catch(function(error) {
           console.error("Authentication failed:", error);
