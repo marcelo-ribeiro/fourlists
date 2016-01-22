@@ -34,16 +34,17 @@
             <a class="header--btn" ui-sref="lists">
               <i class="material-icons">&#xe5c4;</i>
             </a>
+            <h1 class="header--title">{{ list.title }}</h1>
           </div>
 
-          <form class="header--group  form_add_task" name="formAddTask" ng-submit="vm.addTask()" novalidate="">
+          <!-- <form class="header--group  form_add_task" name="formAddTask" ng-submit="vm.addTask()" novalidate="">
             <input type="text" id="inputTitle{{list.id}}" ng-model="vm.task.title" placeholder="Add task" required>
 
             <button type="submit" class="header--btn" ng-disabled="formAddTask.$invalid">
               <i class="material-icons" ng-class="{'md-inactive': formAddTask.$invalid}" ng-hide="vm.processingAdd">&#xe5ca;</i>
               <i class="material-icons  animated rotate" ng-show="vm.processingAdd">&#xE1af;</i>
             </button>
-          </form>
+          </form> -->
 
         </header>
 

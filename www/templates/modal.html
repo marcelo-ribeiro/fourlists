@@ -1,10 +1,10 @@
-<div class="modal modal__opened"> <!-- ui-sref-active="modal__opened" -->
+<div class="modal modal__opened">
 
   <div class="modal--header">
 
     <div class="header--group">
       <a class="header--btn" ui-sref="lists">
-        <i class="material-icons">&#xe5c4;</i>
+        <i class="material-icons">close</i>
       </a>
       <h1 class="header--title">Adicionar tarefa</h1>
     </div>
@@ -15,9 +15,13 @@
 
     <form name="addTaskForm" class="container" novalidate>
 
-      <input type="text" ng-model="vm.task.title" placeholder="Título" required>
+      <div class="form_field">
+        <input type="text" ng-model="vm.task.title" placeholder="Título" required>
+      </div>
 
-      <textarea ng-model="vm.task.description" placeholder="Descrição"></textarea>
+      <div class="form_field">
+        <textarea ng-model="vm.task.description" placeholder="Descrição"></textarea>
+      </div>
 
       <br>
 
@@ -30,7 +34,10 @@
 
       <div class="page--footer modal--footer">
         <button class="btn btn__default" ui-sref="lists">Cancelar</button>
-        <button class="btn btn__primary" ng-click="vm.addTask(vm.task)">Adicionar</button>
+        <button
+          class="btn btn__primary"
+          ng-click="vm.addTask(vm.task)"
+          ng-disabled="addTaskForm.$invalid">Adicionar</button>
       </div>
 
     </form>
