@@ -21,6 +21,7 @@
       authObj.$authWithOAuthPopup("google")
         .then(function(authData) {
           setUser(authData);
+          $state.go('lists');
         })
         .catch(function(error) {
           console.error("Authentication failed:", error);
@@ -58,8 +59,6 @@
         name: authData.google.displayName
       };
       console.log('user: ', $rootScope.user);
-
-      $state.go('lists');
     }
 
 
