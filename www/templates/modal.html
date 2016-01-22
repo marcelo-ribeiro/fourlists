@@ -1,18 +1,40 @@
-<div class="modal" ng-class="{ 'modal__opened': vm.openedModal }">
-  <div class="header">
-    <h1 class="header--title">Add Task</h1>
-    <button class="header--btn" ng-click="vm.openedModal = !vm.openedModal">&lsaquo;</button>
+<div class="modal modal__opened"> <!-- ui-sref-active="modal__opened" -->
+
+  <div class="modal--header">
+
+    <div class="header--group">
+      <a class="header--btn" ui-sref="lists">
+        <i class="material-icons">&#xe5c4;</i>
+      </a>
+      <h1 class="header--title">Adicionar tarefa</h1>
+    </div>
+
   </div>
+
   <div class="main">
-    <form novalidate>
-      <input type="text" ng-model="vm.task.name" required>
-      <input type="text" ng-model="vm.task.description">
 
-      <button ng-click="vm.taskGroup = 1">01</button>
-      <button ng-click="vm.taskGroup = 2">02</button>
+    <form name="addTaskForm" class="container" novalidate>
 
-      <button ng-click="vm.openedModal = !vm.openedModal">Cancel</button>
-      <button ng-click="vm.addTask()">Add Task</button>
+      <input type="text" ng-model="vm.task.title" placeholder="Título" required>
+
+      <textarea ng-model="vm.task.description" placeholder="Descrição"></textarea>
+
+      <br>
+
+      <div>
+        <button class="btn btn__default"
+                ng-repeat="item in vm.lists"
+                ng-click="vm.listId = item.id"
+                ng-class="{'active': vm.listId = item.id}">{{ item.id }}</button>
+      </div>
+
+      <div class="page--footer modal--footer">
+        <button class="btn btn__default" ui-sref="lists">Cancelar</button>
+        <button class="btn btn__primary" ng-click="vm.addTask(vm.task)">Adicionar</button>
+      </div>
+
     </form>
+
   </div>
+
 </div>

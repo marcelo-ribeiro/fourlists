@@ -18,18 +18,18 @@
 
 
     vm.init = function () {
-      vm.resetTask();
+      // vm.resetTask();
       vm.getTasks();
     };
 
 
-    vm.resetTask = function() {
-      vm.task = {
-        title: '',
-        description: '',
-        listId: vm.listId
-      };
-    };
+    // vm.resetTask = function() {
+    //   vm.task = {
+    //     title: '',
+    //     description: '',
+    //     listId: vm.listId
+    //   };
+    // };
 
 
     vm.getTasks = function () {
@@ -62,17 +62,15 @@
         user_id: $rootScope.user.id
       })
       .then(function(ref) {
-        // var id = ref.key();
-        // console.log("added record with id " + id);
-        // vm.tasks.$indexFor(id); // returns location in the array
-        // console.log( vm.tasks );
+
       })
       .catch( function() {
         console.log('Error add');
       })
       .finally( function() {
         vm.processingAdd = false;
-        vm.resetTask();
+        vm.task = {};
+        $state.go('lists');
       });
     };
 

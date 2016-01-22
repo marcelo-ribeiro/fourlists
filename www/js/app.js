@@ -1,8 +1,10 @@
 angular.module('fourlists', ['ionic', 'firebase'])
 
+
 .constant( 'APP_SETTINGS', {
   FIREBASE_URL: 'https://fourlists.firebaseio.com'
 })
+
 
 .run( function( $rootScope, $window, $ionicPlatform, $state, UserFactory ) {
 
@@ -27,14 +29,18 @@ angular.module('fourlists', ['ionic', 'firebase'])
 
   $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
 
-    if ( $rootScope.user == null && toState.name != 'login' ) {
+    if ( $rootScope.user == undefined && toState.name != 'login' ) {
+      console.log('$rootScope.user == null && toState.name != login')
       event.preventDefault();
       $window.location = '#/login';
     }
+    else if ( $rootScope.user && toState.name == 'login' )
+      $window.location = '#/lists';
 
   });
 
 })
+
 
 .config(function ($stateProvider, $urlRouterProvider) {
 
@@ -58,12 +64,21 @@ angular.module('fourlists', ['ionic', 'firebase'])
     }
   })
 
+  .state('addTask', {
+    url: "addTask",
+    templateUrl: "templates/modal.html",
+    controller: 'HomeController as vm'
+    // params: {
+    //   listId: { value: '', squash: true }
+    // }
+  })
+
   .state('profile', {
     url: "/profile",
     templateUrl: "templates/profile.html",
     controller: 'ProfileController as vm'
   })
 
-  $urlRouterProvider.otherwise('/login');
+  $urlRouterProvider.otherwise('/lists');
 
 });

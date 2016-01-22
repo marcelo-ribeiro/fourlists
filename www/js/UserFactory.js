@@ -7,7 +7,7 @@
 
     var authObj = $firebaseAuth(ref);
 
-    $rootScope.user = null;
+    //$rootScope.user = null;
 
 
     return {
@@ -49,6 +49,7 @@
       }
       else {
         console.log("Logged out");
+        $state.go('login');
       }
     }
 
