@@ -1,67 +1,45 @@
 (function () {
   'use strict';
 
-  function HomeController( $rootScope, HomeFactory, $state ) {
+  function HomeController( $rootScope, TaskFactory, $state ) {
 
     var vm = this;
 
 
-    // Default list id
-    vm.listId = 1;
+    init();
+    function init() {
+      // if ( $state.is('editTask') ) {
+      //   console.log('edit');
+      //   getById( $state.params.taskId );
+      // }
 
-    vm.lists = [
-      { id: 1, title: 'Importante e Urgente' },
-      { id: 2, title: 'Importante' },
-      { id: 3, title: 'Urgente' },
-      { id: 4, title: 'Outros' }
-    ];
-
-
-    vm.init = function () {
       // vm.resetTask();
-      vm.getTasks();
+      console.log($state);
+      getLists();
+      getTasks();
     };
 
 
-    // vm.resetTask = function() {
-    //   vm.task = {
-    //     title: '',
-    //     description: '',
-    //     listId: vm.listId
-    //   };
-    // };
+    function getLists() {
+      vm.lists = TaskFactory.getLists();
+    };
 
 
-    vm.getTasks = function () {
-      vm.processing = true;
-
-      vm.tasks = HomeFactory;
-
-      vm.tasks.$loaded()
-      .then( function() {
-        console.log('tasks: ', vm.tasks);
-      })
-      .catch( function(err) {
-        console.error("Error:", err);
-      })
-      .finally( function() {
-        vm.processing = false;
-      });
-
+    function getTasks() {
+      // vm.processing = true;
+      vm.tasks = TaskFactory.getAll();
+      // vm.processing = false;
+      // console.log($state);
     };
 
     vm.addTask = function () {
       vm.processingAdd = true;
 
       vm.task.listId = vm.listId;
+      vm.task.userId = $rootScope.user.id;
 
-      vm.tasks.$add({
-        title: vm.task.title,
-        description: vm.task.description,
-        listId: vm.task.listId,
-        user_id: $rootScope.user.id
-      })
-      .then(function(ref) {
+      TaskFactory.add( vm.task )
+      .then(function(obj) {
 
       })
       .catch( function() {
@@ -74,19 +52,9 @@
       });
     };
 
-    vm.saveTask = function (task, $event) {
-      // TODO deleteObjectProperties( task, 'toggleRemoveButton');
-
-      task.title = $event.target.innerText;
-
-      vm.tasks.$save(task);
-
-      // console.log('task: ', task);
-    };
-
-    vm.removeTask = function (task) {
-      vm.tasks.$remove(task);
-    };
+    vm.openTaskModal = function (item) {
+      $state.go('editTask',{taskId: item.$id});
+    }
 
 
     vm.openList = function( list, focus ) {
@@ -112,13 +80,9 @@
 
 
     // Private functions
-    function deleteObjectProperties( obj, property) {
-      delete obj.property;
-    }
-
-
-    // Initialize
-    vm.init();
+    // function deleteObjectProperties( obj, property) {
+    //   delete obj.property;
+    // }
 
 
   }
@@ -127,7 +91,7 @@
     .module('fourlists')
     .controller('HomeController', HomeController);
 
-  HomeController.$inject = ['$rootScope', 'HomeFactory', '$state'];
+  HomeController.$inject = ['$rootScope', 'TaskFactory', '$state'];
 
   // angular.module('SharedModule')
   //  .config(['$translatePartialLoaderProvider', function ($translatePartialLoaderProvider) {

@@ -67,6 +67,17 @@ body {
   margin: 0;
 }
 
+.section {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
+  margin: 0;
+}
+
 .header {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -133,8 +144,17 @@ body {
 
 .main {
   position: relative;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   height: calc(100% - 48px);
-  padding: 0;
+  padding: 0.5rem;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
 }
 
 .footer {
@@ -181,8 +201,13 @@ input[type=text] {
 
 .lists {
   position: relative;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
   width: 100%;
-  height: 100%;
   padding: 0 8px 8px;
 }
 
@@ -197,13 +222,17 @@ input[type=text] {
 .lists--col {
   width: 50%;
   height: 50%;
-  float: left;
   padding: 8px;
 }
 
 .list {
   position: relative;
-  display: block;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
   width: 100%;
   height: 100%;
   max-height: none;
@@ -215,14 +244,16 @@ input[type=text] {
 }
 .list .main {
   height: 100%;
-  padding: 0.75rem;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 .list .footer {
   position: absolute;
   bottom: 0;
   z-index: 2;
 }
-.list.opened {
+.list__opened {
   position: fixed;
   top: 0;
   right: 0;
@@ -231,18 +262,18 @@ input[type=text] {
   z-index: 95;
   border-radius: none;
 }
-.list.opened .click_area {
+.list__opened .click_area {
   visibility: hidden;
 }
-.list.opened .header {
+.list__opened .header {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
-.list.opened .main {
+.list__opened .main {
   height: calc(100% - 48px);
 }
-.list.opened .footer {
+.list__opened .footer {
   display: none;
 }
 
@@ -289,6 +320,9 @@ input[type=text] {
   text-transform: uppercase;
   font-weight: 700;
   color: rgba(0, 0, 0, 0.4);
+}
+.list__opened .list--title {
+  display: none;
 }
 
 .list--item {

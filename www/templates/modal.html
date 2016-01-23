@@ -1,6 +1,6 @@
-<div class="modal modal__opened">
+<form class="section" name="addTaskForm" novalidate>
 
-  <div class="modal--header">
+  <header class="header">
 
     <div class="header--group">
       <a class="header--btn" ui-sref="lists">
@@ -9,11 +9,11 @@
       <h1 class="header--title">Adicionar tarefa</h1>
     </div>
 
-  </div>
+  </header>
 
-  <div class="main">
+  <main class="main">
 
-    <form name="addTaskForm" class="container" novalidate>
+    <div class="container">
 
       <div class="form_field">
         <input type="text" ng-model="vm.task.title" placeholder="Título" required>
@@ -27,21 +27,36 @@
 
       <div>
         <button class="btn btn__default"
-                ng-repeat="item in vm.lists"
-                ng-click="vm.listId = item.id"
-                ng-class="{'active': vm.listId = item.id}">{{ item.id }}</button>
+        ng-repeat="item in vm.lists"
+        ng-click="vm.listId = item.id"
+        ng-class="{'active': vm.listId = item.id}">{{ item.id }}</button>
       </div>
 
-      <div class="page--footer modal--footer">
-        <button class="btn btn__default" ui-sref="lists">Cancelar</button>
-        <button
-          class="btn btn__primary"
-          ng-click="vm.addTask(vm.task)"
-          ng-disabled="addTaskForm.$invalid">Adicionar</button>
-      </div>
+    </div>
 
-    </form>
+  </main>
 
-  </div>
+  <footer class="footer page--footer">
+    <div class="container">
+      <!-- <button
+        class="list--item--button  btn btn__icon"
+        ng-click="vm.removeTask(item)">
+        <i class="material-icons md-dark md-24">cancel</i>
+      </button> -->
+      <button
+        class="btn btn__default"
+        ui-sref="lists">Cancelar</button>
+      <button
+        class="btn btn__primary"
+        ng-click="vm.addTask(vm.task)"
+        ng-disabled="addTaskForm.$invalid"
+        ng-if="!vm.isEdit()">Adicionar</button>
+      <button
+        class="btn btn__primary"
+        ng-click="vm.save(vm.task)"
+        ng-disabled="addTaskForm.$invalid"
+        ng-if="vm.isEdit()">Salvar alterações</button>
+    </div>
+  </footer>
 
-</div>
+</form>

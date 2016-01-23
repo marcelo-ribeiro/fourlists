@@ -29,13 +29,13 @@ angular.module('fourlists', ['ionic', 'firebase'])
 
   $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
 
-    if ( $rootScope.user == undefined && toState.name != 'login' ) {
-      console.log('$rootScope.user == null && toState.name != login')
-      event.preventDefault();
-      $window.location = '#/login';
-    }
-    else if ( $rootScope.user && toState.name == 'login' )
-      $window.location = '#/lists';
+    // if ( $rootScope.user == undefined && toState.name != 'login' ) {
+    //   console.log('$rootScope.user == null && toState.name != login')
+    //   event.preventDefault();
+    //   $window.location = '#/login';
+    // }
+    // else if ( $rootScope.user && toState.name == 'login' )
+    //   $window.location = '#/lists';
 
   });
 
@@ -67,14 +67,20 @@ angular.module('fourlists', ['ionic', 'firebase'])
   .state('addTask', {
     url: "addTask",
     templateUrl: "templates/modal.html",
-    controller: 'HomeController as vm'
-    // params: {
-    //   listId: { value: '', squash: true }
-    // }
+    controller: 'ModalController as vm'
+  })
+
+  .state('editTask', {
+    url: "editTask/:taskId",
+    templateUrl: "templates/modal.html",
+    controller: 'ModalController as vm',
+    params: {
+      taskId: { value: '', squash: true }
+    }
   })
 
   .state('profile', {
-    url: "/profile",
+    url: "profile",
     templateUrl: "templates/profile.html",
     controller: 'ProfileController as vm'
   })

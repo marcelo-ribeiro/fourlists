@@ -1,10 +1,12 @@
-<div class="header">
+<section class="section">
+
+  <header class="header">
 
 
-  <h1 class="header--title">Fourlists</h1>
+    <h1 class="header--title">Fourlists</h1>
 
 
-  <div class="header--group">
+    <div class="header--group">
     <!-- <button class="header--btn" ui-sref="profile">
       <i class="material-icons">person</i>
     </button> -->
@@ -14,28 +16,28 @@
   </div>
 
 
-</div>
+</header>
 
 
-<div class="main">
+<main class="main">
 
 
-  <div class="lists">
+  <!-- <div class="lists"> -->
 
     <div class="lists--col" ng-repeat="list in vm.lists">
 
-      <section class="list list__{{list.id}}" ui-sref-active="opened">
+    <section class="list list__{{list.id}}" ui-sref-active="list__opened">
 
-        <a class="click_area" ui-sref=".list({ listId: list.id })"></a>
+      <a class="click_area" ui-sref=".list({ listId: list.id })"></a>
 
-        <header class="header">
+      <header class="header">
 
-          <div class="header--group">
-            <a class="header--btn" ui-sref="lists">
-              <i class="material-icons">&#xe5c4;</i>
-            </a>
-            <h1 class="header--title">{{ list.title }}</h1>
-          </div>
+        <div class="header--group">
+          <a class="header--btn" ui-sref="lists">
+            <i class="material-icons">&#xe5c4;</i>
+          </a>
+          <h1 class="header--title">{{ list.title }}</h1>
+        </div>
 
           <!-- <form class="header--group  form_add_task" name="formAddTask" ng-submit="vm.addTask()" novalidate="">
             <input type="text" id="inputTitle{{list.id}}" ng-model="vm.task.title" placeholder="Add task" required>
@@ -56,22 +58,20 @@
 
           <div class="list--item" ng-repeat="item in vm.tasks" ng-if="item.listId == list.id">
 
-            <div
-            class="list--item--label"
-            ng-keyup="vm.saveTask(item, $event)"
-            contenteditable="true">{{item.title}}</div>
+            <!-- <div
+              class="list--item--label"
+              ng-keyup="vm.saveTask(item, $event)"
+              contenteditable="true">{{item.title}}</div> -->
 
-            <button
-            class="list--item--button  btn btn__icon"
-            ng-click="vm.removeTask(item)">
-            <i class="material-icons md-dark md-24">cancel</i>
-          </button>
+              <div
+              class="list--item--label"
+              ng-click="vm.openTaskModal(item)">{{item.title}}</div>
+
+          </div>
 
         </div>
 
-      </div>
-
-      <!-- <footer class="footer"> -->
+        <!-- <footer class="footer"> -->
           <!-- <div class="footer--item">
             <button class="footer--btn  btn btn__block" ng-click="vm.openList(list)">
               <i class="material-icons">&#xe8f4;</i>
@@ -88,7 +88,8 @@
 
       </div><!-- End - Col -->
 
-    </div><!-- End - Lists -->
+      <!-- </div> --><!-- End - Lists -->
 
+    </main>
 
-  </div>
+  </section>
