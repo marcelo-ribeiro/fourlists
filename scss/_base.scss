@@ -85,9 +85,28 @@ body {
   position: relative;
   display: flex;
   height: calc(100% - #{$header_height});
-  padding: 0.5rem;
+  padding: 0;
   flex-grow: 1;
   flex-wrap: wrap;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+
+@mixin container(){
+  padding: 16px;
+  width: 100%;
+}
+
+@mixin container-tablet(){
+  @media(min-width: $screen-tablet) {
+    padding-left: 4.5rem;
+    padding-right: 4.5rem;
+  }
+}
+
+.container {
+  @include container;
+  @include container-tablet;
 }
 
 .footer {

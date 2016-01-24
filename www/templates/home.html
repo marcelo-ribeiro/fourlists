@@ -22,22 +22,22 @@
 <main class="main">
 
 
-  <!-- <div class="lists"> -->
+  <div class="lists">
 
     <div class="lists--col" ng-repeat="list in vm.lists">
 
-    <section class="list list__{{list.id}}" ui-sref-active="list__opened">
+      <section class="list list__{{list.id}}" ui-sref-active="list__opened">
 
-      <a class="click_area" ui-sref=".list({ listId: list.id })"></a>
+        <a class="click_area" ui-sref=".list({ listId: list.id })"></a>
 
-      <header class="header">
+        <header class="header">
 
-        <div class="header--group">
-          <a class="header--btn" ui-sref="lists">
-            <i class="material-icons">&#xe5c4;</i>
-          </a>
-          <h1 class="header--title">{{ list.title }}</h1>
-        </div>
+          <div class="header--group">
+            <a class="header--btn" ui-sref="lists">
+              <i class="material-icons">&#xe5c4;</i>
+            </a>
+            <h1 class="header--title">{{ list.title }}</h1>
+          </div>
 
           <!-- <form class="header--group  form_add_task" name="formAddTask" ng-submit="vm.addTask()" novalidate="">
             <input type="text" id="inputTitle{{list.id}}" ng-model="vm.task.title" placeholder="Add task" required>
@@ -52,11 +52,13 @@
 
         <div class="main">
 
-          <div class="list--title">{{ list.title }}</div>
+        <div class="list--container">
 
-          <div class="loading" ng-if="vm.processing">Carregando...</div>
+            <div class="list--title">{{ list.title }}</div>
 
-          <div class="list--item" ng-repeat="item in vm.tasks" ng-if="item.listId == list.id">
+            <div class="loading" ng-if="vm.processing">Carregando...</div>
+
+            <div class="list--item" ng-repeat="item in vm.tasks" ng-if="item.listId == list.id">
 
             <!-- <div
               class="list--item--label"
@@ -66,6 +68,8 @@
               <div
               class="list--item--label"
               ng-click="vm.openTaskModal(item)">{{item.title}}</div>
+
+            </div>
 
           </div>
 
@@ -88,8 +92,8 @@
 
       </div><!-- End - Col -->
 
-      <!-- </div> --><!-- End - Lists -->
+    </div><!-- End - Lists -->
 
-    </main>
+  </main>
 
-  </section>
+</section>
