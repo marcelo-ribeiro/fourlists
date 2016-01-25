@@ -58,7 +58,7 @@
 
             <div class="loading" ng-if="vm.processing">Carregando...</div>
 
-            <div class="list--item" ng-repeat="item in vm.tasks" ng-if="item.listId == list.id">
+            <div class="list--item" ng-repeat="item in vm.tasks" ng-if="item.list_id == list.id">
 
             <!-- <div
               class="list--item--label"
@@ -66,8 +66,8 @@
               contenteditable="true">{{item.title}}</div> -->
 
               <div
-              class="list--item--label"
-              ng-click="vm.openTaskModal(item)">{{item.title}}</div>
+                class="list--item--label"
+                ng-click="vm.openTaskModal(item)">{{item.title}}</div>
 
             </div>
 

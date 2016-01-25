@@ -13,19 +13,20 @@
     return {
       googleLogin: googleLogin,
       logout: logout,
-      getAuth: getAuth
+      getAuth: getAuth,
+      redirectUser: redirectUser
     };
 
 
     function googleLogin () {
       authObj.$authWithOAuthPopup("google")
-        .then(function(authData) {
-          setUser(authData);
-          $state.go('lists');
-        })
-        .catch(function(error) {
-          console.error("Authentication failed:", error);
-        });
+      .then(function(authData) {
+        setUser(authData);
+        $state.go('lists');
+      })
+      .catch(function(error) {
+        console.error("Authentication failed:", error);
+      });
     };
 
 
@@ -46,10 +47,10 @@
       if (authData) {
         console.log("Authenticated user with uid:", authData.uid);
         setUser(authData);
+        // redirectUser();
       }
       else {
         console.log("Logged out");
-        $state.go('login');
       }
     }
 
@@ -60,6 +61,17 @@
         name: authData.google.displayName
       };
       console.log('user: ', $rootScope.user);
+    }
+
+
+    function redirectUser(){
+      if ( $rootScope.user == undefined && $state.is != 'login' ) {
+        console.log('$rootScope.user == null && toState.name != login')
+        event.preventDefault();
+        $window.location = '#/login';
+      }
+      else if ( $rootScope.user && $state.is == 'login' )
+        $window.location = '#/lists';
     }
 
 

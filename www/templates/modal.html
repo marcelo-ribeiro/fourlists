@@ -16,47 +16,53 @@
     <div class="container">
 
       <div class="form_field">
-        <input type="text" ng-model="vm.task.title" placeholder="Título" required>
+        <!-- <label for="title">Título</label> -->
+        <input id="title" type="text" ng-model="vm.task.title" placeholder="Título" required>
       </div>
 
       <div class="form_field">
-        <textarea ng-model="vm.task.description" placeholder="Descrição"></textarea>
+        <!-- <label for="description">Descrição</label> -->
+        <textarea id="description" ng-model="vm.task.description" placeholder="Descrição"></textarea>
       </div>
 
       <br>
 
       <div>
-        <button class="btn btn__default"
-        ng-repeat="item in vm.lists"
-        ng-click="vm.listId = item.id"
-        ng-class="{'active': vm.listId = item.id}">{{ item.id }}</button>
+        <button
+          type="button"
+          class="btn btn__icon list_button list_button__{{$index}}"
+          ng-repeat="list in vm.lists"
+          ng-click="vm.setList(list.id)">{{ list.id }}</button> <!-- ng-class="{'active': vm.task.list_id = list.id}" -->
       </div>
 
     </div>
 
-  </main>
-
-  <footer class="footer page--footer">
-    <div class="container">
-      <!-- <button
-        class="list--item--button  btn btn__icon"
-        ng-click="vm.removeTask(item)">
-        <i class="material-icons md-dark md-24">cancel</i>
-      </button> -->
-      <button
-        class="btn btn__default"
-        ui-sref="lists">Cancelar</button>
-      <button
-        class="btn btn__primary"
-        ng-click="vm.addTask(vm.task)"
-        ng-disabled="addTaskForm.$invalid"
-        ng-if="!vm.isEdit()">Adicionar</button>
-      <button
-        class="btn btn__primary"
-        ng-click="vm.save(vm.task)"
-        ng-disabled="addTaskForm.$invalid"
-        ng-if="vm.isEdit()">Salvar alterações</button>
+    <div class="page--footer">
+      <div class="container">
+        <!-- <button
+          class="list--item--button  btn btn__icon"
+          ng-click="vm.removeTask(item)">
+          <i class="material-icons md-dark md-24">cancel</i>
+        </button> -->
+        <button
+          type="button"
+          class="btn btn__default"
+          ui-sref="lists">Cancelar</button>
+        <button
+          type="submit"
+          class="btn btn__primary"
+          ng-click="vm.add(vm.task)"
+          ng-disabled="addTaskForm.$invalid"
+          ng-if="!vm.isEdit()">Adicionar</button>
+        <button
+          type="submit"
+          class="btn btn__primary"
+          ng-click="vm.save(vm.task)"
+          ng-disabled="addTaskForm.$invalid"
+          ng-if="vm.isEdit()">Salvar alterações</button>
+      </div>
     </div>
-  </footer>
+
+  </main>
 
 </form>

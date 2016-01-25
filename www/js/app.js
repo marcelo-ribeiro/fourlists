@@ -28,23 +28,13 @@ angular.module('fourlists', ['ionic', 'firebase'])
   UserFactory.getAuth();
 
   $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
-
-    // if ( $rootScope.user == undefined && toState.name != 'login' ) {
-    //   console.log('$rootScope.user == null && toState.name != login')
-    //   event.preventDefault();
-    //   $window.location = '#/login';
-    // }
-    // else if ( $rootScope.user && toState.name == 'login' )
-    //   $window.location = '#/lists';
-
+    UserFactory.redirectUser();
   });
 
   $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
-
     $rootScope.goBack = function() {
       $state.go(fromState);
     }
-
   });
 
 })

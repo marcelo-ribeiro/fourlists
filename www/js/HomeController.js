@@ -14,7 +14,6 @@
       // }
 
       // vm.resetTask();
-      console.log($state);
       getLists();
       getTasks();
     };
@@ -26,29 +25,18 @@
 
 
     function getTasks() {
-      // vm.processing = true;
+      vm.processing = true;
+
       vm.tasks = TaskFactory.getAll();
-      // vm.processing = false;
-      // console.log($state);
-    };
-
-    vm.addTask = function () {
-      vm.processingAdd = true;
-
-      vm.task.listId = vm.listId;
-      vm.task.userId = $rootScope.user.id;
-
-      TaskFactory.add( vm.task )
-      .then(function(obj) {
+      vm.tasks.$loaded()
+      .then(function(data) {
 
       })
-      .catch( function() {
-        console.log('Error add');
+      .catch(function(error) {
+        console.log("Error:", error);
       })
-      .finally( function() {
-        vm.processingAdd = false;
-        vm.task = {};
-        $state.go('lists');
+      .finally(function() {
+        vm.processing = false;
       });
     };
 

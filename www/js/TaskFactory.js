@@ -32,12 +32,12 @@
     }
 
     function add( obj ) {
-      tasks.$add({
+      return tasks.$add({
         title: obj.title,
         description: obj.description,
-        listId: obj.listId
+        list_id: obj.list_id,
+        user_id: obj.user_id
       });
-      return tasks;
     }
 
     function save( obj ) {
