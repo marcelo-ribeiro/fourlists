@@ -1498,7 +1498,6 @@ input[type=text] {
           flex-wrap: wrap;
   width: 100%;
   height: 100%;
-  padding: 0 8px;
 }
 
 .lists--row {
@@ -1512,7 +1511,6 @@ input[type=text] {
 .lists--col {
   width: 50%;
   height: 50%;
-  padding: 8px;
 }
 
 .list {
@@ -1527,8 +1525,6 @@ input[type=text] {
   height: 100%;
   max-height: none;
   box-sizing: border-box;
-  border-radius: 2px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 .list .header {
   display: none;
