@@ -82,27 +82,27 @@ $list-4-color: #DCEDC8;
 }
 .list__1{
   background: $list-1-color;
-  .footer {
-    background: $list-1-color;
-  }
+  // .footer {
+  //   background: $list-1-color;
+  // }
 }
 .list__2 {
   background: $list-2-color;
-  .footer {
-    background: $list-2-color;
-  }
+  // .footer {
+  //   background: $list-2-color;
+  // }
 }
 .list__3 {
   background: $list-3-color;
-  .footer {
-    background: $list-3-color;
-  }
+  // .footer {
+  //   background: $list-3-color;
+  // }
 }
 .list__4 {
   background: $list-4-color;
-  .footer {
-    background: $list-4-color;
-  }
+  // .footer {
+  //   background: $list-4-color;
+  // }
 }
 
 .click_area {
@@ -148,7 +148,10 @@ $list-4-color: #DCEDC8;
   min-height: 48px;
   line-height: 1.25;
   padding: 0.5rem 1rem;
-  border-bottom: 1px solid $black-50;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid $black-50;
+  }
 
   &:hover {
     background: $black-50;

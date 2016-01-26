@@ -63,9 +63,12 @@ angular.module('fourlists', ['ionic', 'firebase'])
   })
 
   .state('addTask', {
-    url: "addTask",
+    url: "addTask/:listId",
     templateUrl: "templates/modal.html",
-    controller: 'ModalController as vm'
+    controller: 'ModalController as vm',
+    params: {
+      listId: { value: null, squash: true }
+    }
   })
 
   .state('editTask', {

@@ -8,12 +8,6 @@
 
     init();
     function init() {
-      // if ( $state.is('editTask') ) {
-      //   console.log('edit');
-      //   getById( $state.params.taskId );
-      // }
-
-      // vm.resetTask();
       getLists();
       getTasks();
     };
@@ -40,15 +34,14 @@
       });
     };
 
-    vm.openTaskModal = function (item) {
-      $state.go('editTask',{taskId: item.$id});
+
+    vm.openAddTask = function (list) {
+      $state.go('addTask',{listId: list.id});
     }
 
-
-    // Private functions
-    // function deleteObjectProperties( obj, property) {
-    //   delete obj.property;
-    // }
+    vm.openEditTask = function (item) {
+      $state.go('editTask',{taskId: item.$id});
+    }
 
 
   }

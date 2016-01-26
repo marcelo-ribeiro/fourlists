@@ -8,6 +8,10 @@
 
     vm.init = function() {
       vm.task = {};
+
+      if ($state.params.listId)
+        vm.task.list_id = $state.params.listId;
+
       vm.pageTitle = 'Adicionar tarefa';
       getLists();
 

@@ -38,6 +38,11 @@
             </a>
             <h1 class="header--title">{{ list.title }}</h1>
           </div>
+          <div class="header--group">
+            <a class="header--btn" ng-click="vm.openAddTask(list)">
+              <i class="material-icons">add</i>
+            </a>
+          </div>
 
           <!-- <form class="header--group  form_add_task" name="formAddTask" ng-submit="vm.addTask()" novalidate="">
             <input type="text" id="inputTitle{{list.id}}" ng-model="vm.task.title" placeholder="Add task" required>
@@ -58,16 +63,11 @@
 
             <div class="loading  list--item list--item--label" ng-if="vm.processing">Carregando...</div>
 
-            <div class="list--item" ng-repeat="item in vm.tasks | orderBy:'-$$hashKey'" ng-if="item.list_id == list.id">
-
-            <!-- <div
-              class="list--item--label"
-              ng-keyup="vm.saveTask(item, $event)"
-              contenteditable="true">{{item.title}}</div> -->
+            <div class="list--item" ng-repeat="task in vm.tasks | orderBy:'-$$hashKey'" ng-if="task.list_id == list.id">
 
               <div
                 class="list--item--label"
-                ng-click="vm.openTaskModal(item)">{{item.title}}</div>
+                ng-click="vm.openEditTask(task)">{{task.title}}</div>
 
             </div>
 

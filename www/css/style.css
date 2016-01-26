@@ -1569,28 +1569,16 @@ input[type=text] {
 .list__1 {
   background: #FFCDD2;
 }
-.list__1 .footer {
-  background: #FFCDD2;
-}
 
 .list__2 {
-  background: #FFE0B2;
-}
-.list__2 .footer {
   background: #FFE0B2;
 }
 
 .list__3 {
   background: #FFF9C4;
 }
-.list__3 .footer {
-  background: #FFF9C4;
-}
 
 .list__4 {
-  background: #DCEDC8;
-}
-.list__4 .footer {
   background: #DCEDC8;
 }
 
@@ -1646,6 +1634,8 @@ input[type=text] {
   min-height: 48px;
   line-height: 1.25;
   padding: 0.5rem 1rem;
+}
+.list--item:not(:last-child) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 .list--item:hover {
