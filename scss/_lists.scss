@@ -28,6 +28,19 @@ $list-4-color: #DCEDC8;
   // padding: 8px;
 }
 
+.lists--col:nth-child(1) {
+  padding: 0 4px 4px 0;
+}
+.lists--col:nth-child(2) {
+  padding: 0 0 4px 4px;
+}
+.lists--col:nth-child(3) {
+  padding: 4px 4px 0 0;
+}
+.lists--col:nth-child(4) {
+  padding: 4px 0 0 4px;
+}
+
 .list {
   position: relative;
   display: flex;
@@ -67,17 +80,29 @@ $list-4-color: #DCEDC8;
   }
 
 }
-.list__1, .list__1 .footer {
+.list__1{
   background: $list-1-color;
+  .footer {
+    background: $list-1-color;
+  }
 }
-.list__2, .list__2 .footer {
+.list__2 {
   background: $list-2-color;
+  .footer {
+    background: $list-2-color;
+  }
 }
-.list__3, .list__3 .footer {
+.list__3 {
   background: $list-3-color;
+  .footer {
+    background: $list-3-color;
+  }
 }
-.list__4, .list__4 .footer {
+.list__4 {
   background: $list-4-color;
+  .footer {
+    background: $list-4-color;
+  }
 }
 
 .click_area {

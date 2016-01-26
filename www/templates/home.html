@@ -58,7 +58,7 @@
 
             <div class="loading  list--item list--item--label" ng-if="vm.processing">Carregando...</div>
 
-            <div class="list--item" ng-repeat="item in vm.tasks" ng-if="item.list_id == list.id">
+            <div class="list--item" ng-repeat="item in vm.tasks | orderBy:'-$$hashKey'" ng-if="item.list_id == list.id">
 
             <!-- <div
               class="list--item--label"
