@@ -34,7 +34,7 @@
 
           <div class="header--group">
             <a class="header--btn" ui-sref="lists">
-              <i class="material-icons">&#xe5c4;</i>
+              <i class="material-icons">close</i>
             </a>
             <h1 class="header--title">{{ list.title }}</h1>
           </div>
@@ -56,7 +56,7 @@
 
             <div class="list--title">{{ list.title }}</div>
 
-            <div class="loading" ng-if="vm.processing">Carregando...</div>
+            <div class="loading  list--item list--item--label" ng-if="vm.processing">Carregando...</div>
 
             <div class="list--item" ng-repeat="item in vm.tasks" ng-if="item.list_id == list.id">
 

@@ -33,7 +33,7 @@ angular.module('fourlists', ['ionic', 'firebase'])
 
   $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
     $rootScope.goBack = function() {
-      $state.go(fromState);
+      $state.go(fromState, fromParams);
     }
   });
 

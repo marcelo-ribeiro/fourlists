@@ -1,3 +1,9 @@
+// VARIABLES
+$list-1-color: #FFCDD2;
+$list-2-color: #FFE0B2;
+$list-3-color: #FFF9C4;
+$list-4-color: #DCEDC8;
+
 // #LISTS
 //
 .lists {
@@ -62,16 +68,16 @@
 
 }
 .list__1, .list__1 .footer {
-  background: #FFCDD2;
+  background: $list-1-color;
 }
 .list__2, .list__2 .footer {
-  background: #FFE0B2;
+  background: $list-2-color;
 }
 .list__3, .list__3 .footer {
-  background: #FFF9C4;
+  background: $list-3-color;
 }
 .list__4, .list__4 .footer {
-  background: #DCEDC8;
+  background: $list-4-color;
 }
 
 .click_area {
@@ -91,17 +97,17 @@
 
 .list--container {
   @include container;
+  padding: 0;
   .list__opened & {
     @include container-tablet;
   }
 }
 
 .list--title {
-  // min-height: 32px;
-  margin-bottom: 8px;
-  line-height: 1.25;
+  padding: 1rem 1rem 0.5rem;
   font-size: 0.75rem;
   font-family: 'Roboto Condensed';
+  line-height: 1.25;
   text-transform: uppercase;
   font-weight: 700;
   color: $text_light_color;
@@ -114,38 +120,34 @@
 .list--item {
   display: flex;
   width: 100%;
-  min-height: 32px;
-  margin-bottom: 0.5rem;
-  line-height: 1.125rem;
-  border-bottom: 1px solid $black-100;
-}
+  min-height: 48px;
+  line-height: 1.25;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid $black-50;
 
-// .list--item--checkbox {
-//   display: none;
-//   margin-right: 0.25rem;
-//   flex-shrink: 0;
-// }
+  &:hover {
+    background: $black-50;
+  }
+}
 
 .list--item--label {
+  display: flex;
   flex-grow: 1;
-  align-self: flex-end;
-  padding-bottom: 0.5rem;
+  align-items: center;
   font-size: 0.875rem;
-  cursor: text;
-
-  &:focus {
-    border-bottom-color: $text_medium_color;
-  }
-
-  &:focus ~ .list--item--button {
-    visibility: visible;
-  }
+  cursor: pointer;
 }
 
-.list--item--button {
-  visibility: hidden;
 
-  // .list.opened & {
-  //   visibility: visible;
-  // }
+@mixin list_button( $color ) {
+  background: $color;
+  &:hover,
+  &:focus,
+  &:active {
+    background: $color;
+  }
 }
+.list_button__1 { @include list_button($list-1-color); }
+.list_button__2 { @include list_button($list-2-color); }
+.list_button__3 { @include list_button($list-3-color); }
+.list_button__4 { @include list_button($list-4-color); }

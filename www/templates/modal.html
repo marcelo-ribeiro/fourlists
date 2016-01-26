@@ -4,9 +4,9 @@
 
     <div class="header--group">
       <a class="header--btn" ng-click="goBack()">
-        <i class="material-icons">close</i>
+        <i class="material-icons">arrow_back</i>
       </a>
-      <h1 class="header--title">Adicionar tarefa</h1>
+      <h1 class="header--title">{{vm.pageTitle}}</h1>
     </div>
 
   </header>
@@ -27,39 +27,68 @@
 
       <br>
 
-      <div>
-        <button
+      <div class="row">
+        <div class="col" ng-repeat="list in vm.lists">
+          <button
           type="button"
-          class="btn btn__icon list_button list_button__{{$index}}"
-          ng-repeat="list in vm.lists"
-          ng-click="vm.setList(list.id)">{{ list.id }}</button> <!-- ng-class="{'active': vm.task.list_id = list.id}" -->
+          class="btn btn__icon btn__default  list_button list_button__{{$index+1}}"
+          ng-click="vm.setList(list.id)">
+            <i class="btn--icon  material-icons md-24 md-dark md-inactive" ng-show="vm.task.list_id == $index+1">check</i>
+          </button> <!-- ng-class="{'active': vm.task.list_id = list.id}" -->
+        </div>
       </div>
 
     </div>
 
-    <div class="page--footer">
+    <div class="footer">
       <div class="container">
-        <!-- <button
-          class="list--item--button  btn btn__icon"
-          ng-click="vm.removeTask(item)">
-          <i class="material-icons md-dark md-24">cancel</i>
-        </button> -->
-        <button
-          type="button"
-          class="btn btn__default"
-          ui-sref="lists">Cancelar</button>
-        <button
-          type="submit"
-          class="btn btn__primary"
-          ng-click="vm.add(vm.task)"
-          ng-disabled="addTaskForm.$invalid"
-          ng-if="!vm.isEdit()">Adicionar</button>
-        <button
-          type="submit"
-          class="btn btn__primary"
-          ng-click="vm.save(vm.task)"
-          ng-disabled="addTaskForm.$invalid"
-          ng-if="vm.isEdit()">Salvar alterações</button>
+
+        <div class="row">
+
+          <div class="col col-sm-4 col-md-3 col-lg-2">
+            <button
+            type="button"
+            class="btn btn__default btn__block"
+            ng-click="goBack()">
+              <i class="btn--icon  material-icons md-24">arrow_back</i>
+              <span class="btn--label">Voltar</span>
+            </button>
+          </div>
+
+          <div class="col col-sm-4 col-md-3 col-lg-2">
+            <button
+            type="submit"
+            class="btn btn__primary btn__block"
+            ng-click="vm.save(vm.task)"
+            ng-disabled="addTaskForm.$invalid"
+            ng-if="vm.isEdit()">
+              <i class="btn--icon  material-icons md-24">cloud_upload</i>
+              <span class="btn--label">Salvar alterações</span>
+            </button>
+
+            <button
+            type="submit"
+            class="btn btn__primary btn__block"
+            ng-click="vm.add(vm.task)"
+            ng-disabled="addTaskForm.$invalid"
+            ng-if="!vm.isEdit()">
+              <i class="btn--icon  material-icons md-24">cloud_upload</i>
+              <span class="btn--label">Adicionar</span>
+            </button>
+          </div>
+
+          <div class="col col-sm-4 col-md-3 col-lg-2">
+            <button
+            class="btn btn__block"
+            ng-click="vm.remove(vm.task)"
+            ng-if="vm.isEdit()">
+              <i class="btn--icon  material-icons md-24">delete</i>
+              <span class="btn--label">Remover</span>
+            </button>
+          </div>
+
+        </div>
+
       </div>
     </div>
 

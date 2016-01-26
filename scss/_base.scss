@@ -2,6 +2,7 @@ $text_color: rgba(0, 0, 0, 0.8);
 $text_medium_color: rgba(0, 0, 0, 0.6);
 $text_light_color: rgba(0, 0, 0, 0.4);
 
+$black-50: rgba(#000, 0.05);
 $black-100: rgba(#000, 0.1);
 $black-150: rgba(#000, 0.15);
 $black-200: rgba(#000, 0.2);
@@ -14,7 +15,7 @@ $header_title_font_size: 20px;
 //
 html {
   height: 100%;
-  font: 16px/20px 'Roboto', arial;
+  font: 16px/1.25 'Roboto', arial;
   color: $text_color;
   background-color: #fff;
 }
@@ -51,6 +52,7 @@ body {
   margin: 0;
   padding: 0 1rem;
   align-self: center;
+  font-family: 'Roboto Condensed';
   font-weight: 300;
   font-size: $header_title_font_size;
   color: $text_light_color;
@@ -128,4 +130,8 @@ input[type=text] {
 
 ::placeholder {
   color: $text_light_color;
+}
+
+.col {
+  padding: 0.5rem 1rem;
 }

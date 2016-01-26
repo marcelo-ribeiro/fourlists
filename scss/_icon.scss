@@ -2,7 +2,6 @@
   font-size: 24px;
   width: 24px;
   height: 24px;
-  color: rgba(0, 0, 0, 0.54);
 }
 // Rules for sizing the icon.
 // .material-icons.md-18 { font-size: 18px; }
@@ -11,9 +10,9 @@
 .material-icons.md-48 { font-size: 48px; width: 48px; height: 48px; }
 
 // Rules for using icons as black on a light background.
-// .material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
-.md-inactive { color: rgba(0, 0, 0, 0.26); }
+.material-icons.md-dark { color: rgba(0, 0, 0, 0.6); }
+.md-dark.md-inactive { color: rgba(0, 0, 0, 0.4); }
 
 // Rules for using icons as white on a dark background.
-.md-light { color: rgba(255, 255, 255, 1); }
-.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
+.material-icons.md-light { color: rgba(255, 255, 255, 0.8); }
+.md-light.md-inactive { color: rgba(255, 255, 255, 0.4); }

@@ -6,13 +6,15 @@
     var vm = this;
 
 
-    init();
-    function init() {
+    vm.init = function() {
       vm.task = {};
+      vm.pageTitle = 'Adicionar tarefa';
       getLists();
 
-      if (vm.isEdit)
+      if ( vm.isEdit() ) {
+        vm.pageTitle = 'Detalhes da tarefa';
         getTask($state.params.taskId);
+      }
     }
 
 
@@ -62,14 +64,17 @@
 
     vm.save = function (task) {
       TaskFactory.save(task);
-      $state.go('lists');
+      $rootScope.goBack();
     };
 
 
     vm.remove = function (task) {
       TaskFactory.remove(task);
+      $rootScope.goBack();
     };
 
+
+    vm.init();
 
   }
 
