@@ -3,11 +3,13 @@
 
   function TaskFactory( $rootScope, APP_SETTINGS, $firebaseArray ) {
 
+    // var priority = 10000000000;
+
     var tasksRef = new Firebase(APP_SETTINGS.FIREBASE_URL).child("tasks");
 
-    var tasksByUserId = tasksRef.orderByChild("user_id").equalTo($rootScope.user.id); //orderByChild("timestamp") //.limitToLast(10)
+    var query = tasksRef.orderByChild("user_id").equalTo($rootScope.user.id);
 
-    var tasks = $firebaseArray(tasksByUserId);
+    var tasks = $firebaseArray(query);
 
     return {
       getLists: getLists,
@@ -28,7 +30,7 @@
     }
 
     function getAll() {
-      return tasks;
+      return tasks.$loaded();
     }
 
     function add( obj ) {

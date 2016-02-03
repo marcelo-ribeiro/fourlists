@@ -2,80 +2,75 @@
 
   <header class="header">
 
-
     <h1 class="header--title">Fourlists</h1>
 
-
     <div class="header--group">
-    <!-- <button class="header--btn" ui-sref="profile">
-      <i class="material-icons">person</i>
-    </button> -->
-    <a class="header--btn" ui-sref="addTask">
-      <i class="material-icons">add</i>
-    </a>
-  </div>
+      <a class="header--btn" ui-sref="addTask">
+        <i class="material-icons">add</i>
+      </a>
+    </div>
+
+  </header>
 
 
-</header>
+  <main class="main">
 
 
-<main class="main">
+    <div class="lists">
+
+    <!-- <div class="lists--row"> -->
 
 
-  <div class="lists">
+      <div class="lists--col" ng-repeat="list in vm.lists">
 
-    <div class="lists--col" ng-repeat="list in vm.lists">
 
-      <section class="list list__{{list.id}}" ui-sref-active="list__opened">
+        <section class="list list__{{list.id}}" ui-sref-active="list__opened">
 
-        <a class="click_area" ui-sref=".list({ listId: list.id })"></a>
 
-        <header class="header">
+          <a class="click_area" ui-sref=".list({ listId: list.id })"></a>
 
-          <div class="header--group">
-            <a class="header--btn" ui-sref="lists">
-              <i class="material-icons">close</i>
-            </a>
-            <h1 class="header--title">{{ list.title }}</h1>
-          </div>
-          <div class="header--group">
-            <a class="header--btn" ng-click="vm.openAddTask(list)">
-              <i class="material-icons">add</i>
-            </a>
-          </div>
 
-          <!-- <form class="header--group  form_add_task" name="formAddTask" ng-submit="vm.addTask()" novalidate="">
-            <input type="text" id="inputTitle{{list.id}}" ng-model="vm.task.title" placeholder="Add task" required>
+          <header class="header">
 
-            <button type="submit" class="header--btn" ng-disabled="formAddTask.$invalid">
-              <i class="material-icons" ng-class="{'md-inactive': formAddTask.$invalid}" ng-hide="vm.processingAdd">&#xe5ca;</i>
-              <i class="material-icons  animated rotate" ng-show="vm.processingAdd">&#xE1af;</i>
-            </button>
-          </form> -->
+            <div class="header--group">
+              <a class="header--btn" ui-sref="lists">
+                <i class="material-icons">close</i>
+              </a>
+              <h1 class="header--title">{{ list.title }}</h1>
+            </div>
+            <div class="header--group">
+              <a class="header--btn" ng-click="vm.openAddTask(list)">
+                <i class="material-icons">add</i>
+              </a>
+            </div>
 
-        </header>
+          </header>
 
-        <div class="main">
 
-        <div class="list--container">
+          <div class="main">
 
-            <div class="list--title">{{ list.title }}</div>
+            <div class="list--container">
 
-            <div class="loading  list--item list--item--label" ng-if="vm.processing">Carregando...</div>
+              <div class="list--title">{{ list.title }}</div>
 
-            <div class="list--item" ng-repeat="task in vm.tasks | orderBy:'-$$hashKey'" ng-if="task.list_id == list.id">
+              <div class="loading  list--item list--item--label" ng-if="vm.processing">Carregando...</div>
 
               <div
-                class="list--item--label"
-                ng-click="vm.openEditTask(task)">{{task.title}}</div>
+              class="list--item"
+              ng-repeat="task in vm.tasks"
+              ng-if="task.list_id == list.id"
+              ng-click="vm.openEditTask(task)">
+
+                <div
+                class="list--item--label">{{task.title}}</div>
+
+              </div>
 
             </div>
 
           </div>
 
-        </div>
-
-        <!-- <footer class="footer"> -->
+          <!-- <footer class="footer"> -->
           <!-- <div class="footer--item">
             <button class="footer--btn  btn btn__block" ng-click="vm.openList(list)">
               <i class="material-icons">&#xe8f4;</i>
@@ -91,6 +86,9 @@
         </section><!-- End - List -->
 
       </div><!-- End - Col -->
+
+
+      <!-- </div> --> <!-- End - Row -->
 
     </div><!-- End - Lists -->
 

@@ -7,7 +7,7 @@
 
     var authObj = $firebaseAuth(ref);
 
-    //$rootScope.user = null;
+    $rootScope.user = null;
 
 
     return {
@@ -65,7 +65,7 @@
 
 
     function redirectUser(){
-      if ( $rootScope.user == undefined && $state.is != 'login' ) {
+      if ( $rootScope.user == null && $state.is != 'login' ) {
         console.log('$rootScope.user == null && toState.name != login')
         event.preventDefault();
         $window.location = '#/login';

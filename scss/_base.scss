@@ -18,6 +18,8 @@ html {
   font: 16px/1.25 'Roboto', arial;
   color: $text_color;
   background-color: #fff;
+  text-rendering: optimizeLegibility;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -90,12 +92,12 @@ body {
   padding: 0;
   flex-grow: 1;
   flex-wrap: wrap;
-  align-items: flex-start;
   align-content: flex-start;
+  // align-items: flex-start;
 }
 
-@mixin container(){
-  padding: 16px;
+@mixin container($padding: 1rem){
+  padding: $padding;
   width: 100%;
 }
 

@@ -1,4 +1,4 @@
-angular.module('fourlists', ['ionic', 'firebase'])
+angular.module('fourlists', ['ionic', 'firebase']) //, 'angular.filter'
 
 
 .constant( 'APP_SETTINGS', {
@@ -81,11 +81,11 @@ angular.module('fourlists', ['ionic', 'firebase'])
   })
 
   .state('profile', {
-    url: "profile",
+    url: "/profile",
     templateUrl: "templates/profile.html",
     controller: 'ProfileController as vm'
   })
 
-  $urlRouterProvider.otherwise('/lists');
+  $urlRouterProvider.otherwise('/login');
 
 });

@@ -21,16 +21,17 @@
     function getTasks() {
       vm.processing = true;
 
-      vm.tasks = TaskFactory.getAll();
-      vm.tasks.$loaded()
+      TaskFactory.getAll()
       .then(function(data) {
-        console.log('tasks:', data)
+        console.log('tasks:', data);
+        vm.tasks = data;
       })
       .catch(function(error) {
         console.log("Error:", error);
       })
       .finally(function() {
         vm.processing = false;
+        console.log('finally get tasks');
       });
     };
 

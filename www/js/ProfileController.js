@@ -1,11 +1,9 @@
 (function() {
   'use strict';
 
-  function ProfileController( $rootScope, UserFactory, $state ) {
+  function ProfileController( UserFactory ) {
 
     var vm = this;
-
-    vm.authObj = UserFactory;
 
     vm.logout = logout;
 
@@ -27,7 +25,7 @@
   .module('fourlists')
   .controller('ProfileController', ProfileController);
 
-  ProfileController.$inject = ['$rootScope', 'UserFactory', '$state'];
+  ProfileController.$inject = ['UserFactory'];
 
   // angular.module('SharedModule')
   //  .config(['$translatePartialLoaderProvider', function ($translatePartialLoaderProvider) {

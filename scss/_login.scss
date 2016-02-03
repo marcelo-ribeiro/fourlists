@@ -1,3 +1,9 @@
-.login {
-  padding: 0 1rem;
+.login--container {
+  @include container(2rem);
+  text-align: center;
+}
+
+.login--title {
+  margin-top: 1rem;
+  color: $text_medium_color;
 }
