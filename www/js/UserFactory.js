@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  function UserFactory( $rootScope, $state, APP_SETTINGS, $firebaseAuth ) {
+  function UserFactory( $rootScope, $state, APP_SETTINGS, $firebaseAuth, $window ) {
 
     var ref = new Firebase(APP_SETTINGS.FIREBASE_URL);
 
@@ -11,6 +11,7 @@
 
 
     return {
+      authRef: getAuthRef,
       googleLogin: googleLogin,
       logout: logout,
       getAuth: getAuth,
@@ -18,12 +19,22 @@
     };
 
 
+    function getAuthRef () {
+      return authObj;
+    }
+
+
     function googleLogin () {
       authObj.$authWithOAuthPopup("google")
       .then(function(authData) {
         setUser(authData);
         $state.go('lists');
-      })
+      }
+      // ,{
+      // remember: "sessionOnly",
+      // scope: "email"
+      // }
+      )
       .catch(function(error) {
         console.error("Authentication failed:", error);
       });
@@ -40,38 +51,56 @@
 
 
     function getAuth() {
+      console.log('getingAuth'); //debug
+
       var authData = authObj.$getAuth();
 
-      console.log('authData', authData);
-
       if (authData) {
-        console.log("Authenticated user with uid:", authData.uid);
+        console.log("Has Auth:", authData); //debug
         setUser(authData);
-        // redirectUser();
       }
       else {
-        console.log("Logged out");
+        console.log("No authData"); //debug
       }
     }
 
 
     function setUser(authData) {
-      $rootScope.user = {
-        id: authData.uid,
-        name: authData.google.displayName
-      };
-      console.log('user: ', $rootScope.user);
+
+      // if ( $rootScope.user == null ) {
+        // console.log('$rootScope.user == null'); //debug
+        $rootScope.user = {
+          id: authData.uid,
+          name: authData.google.displayName
+        };
+      // }
+
+      console.log('setingUser - User: ', $rootScope.user); //debug
+
+      redirectUser();
+
     }
 
 
     function redirectUser(){
-      if ( $rootScope.user == null && $state.is != 'login' ) {
+      console.log('verify need redirectUser');
+      console.log('state:', $state);
+
+      if ( $rootScope.user == null && $state.current.name != 'login' ) {
         console.log('$rootScope.user == null && toState.name != login')
         event.preventDefault();
         $window.location = '#/login';
       }
-      else if ( $rootScope.user && $state.is == 'login' )
+
+      if ( $rootScope.user !== null && $state.current.name=="login" ) {
+        // event.preventDefault();
+        console.log('Has user and state is login');
         $window.location = '#/lists';
+        $state.go('lists');
+      }
+      // else{
+      //   console.log('not need redirectUser');
+      // }
     }
 
 
@@ -81,5 +110,5 @@
   .module('fourlists')
   .factory('UserFactory', UserFactory);
 
-  UserFactory.$inject = ['$rootScope', '$state', 'APP_SETTINGS', '$firebaseAuth'];
+  UserFactory.$inject = ['$rootScope', '$state', 'APP_SETTINGS', '$firebaseAuth', '$window'];
 })();

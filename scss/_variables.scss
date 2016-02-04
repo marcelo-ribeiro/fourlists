@@ -1,0 +1,40 @@
+// CONFIG
+// ======
+$enable-grid: true;
+// $enable-grid: false;
+
+// VARIABLES
+// =========
+
+$background-color: rgba(#000, 0.025) !default;
+
+$font_family: 'Roboto', Arial, sans-serif !default;
+$font_size: 16px !default;
+$line_height: $font-size * 1.5 !default;
+// $scale: 1.5; // 1.618
+$baseline: $line-height;
+
+$text-color: rgba(0, 0, 0, 0.8);
+$text-medium-color: rgba(0, 0, 0, 0.6);
+$text-light-color: rgba(0, 0, 0, 0.4);
+
+$black-50: rgba(#000, 0.05);
+$black-100: rgba(#000, 0.1);
+$black-150: rgba(#000, 0.15);
+$black-200: rgba(#000, 0.2);
+
+$header-height: 3.5rem;
+$header-title-font-size: 1.25rem;
+
+$transition: all 200ms linear;
+
+
+// MEDIA QUERIES
+$screen-tablet: 768px !default;
+
+// BUTTON
+$button-height: 3.5rem;
+$button-width: 3.5rem;
+
+// FORM
+$input-height: 2rem;

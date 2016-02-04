@@ -1,9 +1,11 @@
-@import '../www/lib/bedrock-base/scss/general';
-@import 'reset';
+// @import '../www/lib/bedrock-base/scss/general';
+// @import 'reset';
 @import 'typography';
 @import 'animate';
-@import 'base';
+@import 'variables';
+@import 'base2';
+@import 'grid';
 @import 'login';
 @import 'lists';
-@import 'modal';
+// @import 'modal';
 @import 'icon';

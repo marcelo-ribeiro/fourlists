@@ -2,10 +2,11 @@
 
   <header class="header">
 
-    <h1 class="header--title">Fourlists</h1>
-
-    <div class="header--group">
-      <a class="header--btn" ui-sref="addTask">
+    <div class="group --left">
+      <h1 class="title">Fourlists</h1>
+    </div>
+    <div class="group --right">
+      <a class="btn --icon" ui-sref="addTask">
         <i class="material-icons">add</i>
       </a>
     </div>
@@ -30,16 +31,16 @@
           <a class="click_area" ui-sref=".list({ listId: list.id })"></a>
 
 
-          <header class="header">
+          <header class="header --shadow">
 
-            <div class="header--group">
-              <a class="header--btn" ui-sref="lists">
+            <div class="group --left">
+              <a class="btn --icon" ui-sref="lists">
                 <i class="material-icons">close</i>
               </a>
-              <h1 class="header--title">{{ list.title }}</h1>
+              <h1 class="title">{{ list.title }}</h1>
             </div>
-            <div class="header--group">
-              <a class="header--btn" ng-click="vm.openAddTask(list)">
+            <div class="group --right">
+              <a class="btn --icon" ng-click="vm.openAddTask(list)">
                 <i class="material-icons">add</i>
               </a>
             </div>
