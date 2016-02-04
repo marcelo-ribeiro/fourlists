@@ -28,10 +28,12 @@ angular.module('fourlists', ['ionic', 'firebase']) //, 'angular.filter'
   UserFactory.getAuth();
 
   $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+    console.log('$stateChangeStart');
     UserFactory.redirectUser();
   });
 
   $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
+    console.log('$stateChangeSuccess');
     $rootScope.goBack = function() {
       $state.go(fromState, fromParams);
     }

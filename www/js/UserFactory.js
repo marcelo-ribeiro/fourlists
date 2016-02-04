@@ -40,9 +40,9 @@
 
 
     function getAuth() {
-      var authData = authObj.$getAuth();
+      console.log('getingAuth');
 
-      console.log('authData', authData);
+      var authData = authObj.$getAuth();
 
       if (authData) {
         console.log("Authenticated user with uid:", authData.uid);
@@ -50,7 +50,7 @@
         // redirectUser();
       }
       else {
-        console.log("Logged out");
+        console.log("No authData");
       }
     }
 
@@ -60,18 +60,24 @@
         id: authData.uid,
         name: authData.google.displayName
       };
-      console.log('user: ', $rootScope.user);
+      console.log('setingUser - User: ', $rootScope.user);
     }
 
 
     function redirectUser(){
+      console.log('verify need redirectUser');
       if ( $rootScope.user == null && $state.is != 'login' ) {
         console.log('$rootScope.user == null && toState.name != login')
         event.preventDefault();
         $window.location = '#/login';
       }
-      else if ( $rootScope.user && $state.is == 'login' )
+      else if ( $rootScope.user && $state.is == 'login' ) {
+        event.preventDefault();
         $window.location = '#/lists';
+      }
+      else{
+        console.log('not need redirectUser');
+      }
     }
 
 
