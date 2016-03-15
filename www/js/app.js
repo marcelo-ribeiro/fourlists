@@ -54,17 +54,23 @@ angular.module('fourlists', ['ionic', 'firebase']) //, 'angular.filter'
   });
 
   $rootScope.$on("$routeChangeError", function(event, next, previous, error) {
-      // We can catch the error thrown when the $requireAuth promise is rejected
-      // and redirect the user back to the login page
-      if (error === "AUTH_REQUIRED") {
-        $location.path("/login");
-      }
-    });
+    // We can catch the error thrown when the $requireAuth promise is rejected
+    // and redirect the user back to the login page
+    if (error === "AUTH_REQUIRED") {
+      $location.path("/login");
+    }
+  });
 
 })
 
 
-.config(function ($stateProvider, $urlRouterProvider) {
+.config(function ($stateProvider, $urlRouterProvider, $logProvider, $compileProvider, $ionicConfigProvider) {
+
+  $logProvider.debugEnabled(false);
+  $compileProvider.debugInfoEnabled(false);
+  $ionicConfigProvider.views.transition('none');
+  $ionicConfigProvider.scrolling.jsScrolling(false);
+  $ionicConfigProvider.views.maxCache(0);
 
   $stateProvider
 

@@ -9,6 +9,15 @@
       <h1 class="title">{{vm.pageTitle}}</h1>
     </div>
 
+    <div class="group --right">
+      <button
+      class="btn --icon"
+      ng-click="vm.remove(vm.task)"
+      ng-if="vm.isEdit()">
+        <i class="material-icons">delete</i>
+      </button>
+    </div>
+
   </header>
 
   <main class="main">
@@ -59,14 +68,6 @@
       ng-if="!vm.isEdit()">
         <!-- <i class="btn--icon  material-icons md-24">cloud_upload</i> -->
         <span class="btn--label">Adicionar</span>
-      </button>
-
-      <button
-      class="btn"
-      ng-click="vm.remove(vm.task)"
-      ng-if="vm.isEdit()">
-        <!-- <i class="btn--icon  material-icons md-24">delete</i> -->
-        <span class="btn--label">Remover</span>
       </button>
 
     </div>

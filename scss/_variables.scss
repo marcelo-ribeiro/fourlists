@@ -1,12 +1,12 @@
 // CONFIG
 // ======
-$enable-grid: true;
-// $enable-grid: false;
+// $enable-grid: true;
+$enable-grid: false;
 
 // VARIABLES
 // =========
 
-$background-color: rgba(#000, 0.025) !default;
+$background-color: rgba(#000, 0) !default;
 
 $font_family: 'Roboto', Arial, sans-serif !default;
 $font_size: 16px !default;
@@ -37,4 +37,4 @@ $button-height: 3.5rem;
 $button-width: 3.5rem;
 
 // FORM
-$input-height: 2rem;
+$input-height: 2.5rem;

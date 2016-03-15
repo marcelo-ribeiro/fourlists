@@ -22,7 +22,7 @@
     <!-- <div class="lists--row"> -->
 
 
-      <div class="lists--col" ng-repeat="list in vm.lists">
+      <div class="lists--col" ng-repeat="list in vm.lists track by list.id">
 
 
         <section class="list list__{{list.id}}" ui-sref-active="list__opened">
@@ -58,7 +58,7 @@
 
               <div
               class="list--item"
-              ng-repeat="task in vm.tasks"
+              ng-repeat="task in vm.tasks track by task.$id"
               ng-if="task.list_id == list.id"
               ng-click="vm.openEditTask(task)">
 
