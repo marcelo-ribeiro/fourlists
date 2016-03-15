@@ -78,7 +78,6 @@
       console.log('setingUser - User: ', $rootScope.user); //debug
 
       redirectUser();
-
     }
 
 
@@ -92,7 +91,7 @@
         $window.location = '#/login';
       }
 
-      if ( $rootScope.user !== null && $state.current.name=="login" ) {
+      if ( $rootScope.user !== null && $state.current.name == "login" ) {
         // event.preventDefault();
         console.log('Has user and state is login');
         $window.location = '#/lists';

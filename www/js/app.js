@@ -27,33 +27,33 @@ angular.module('fourlists', ['ionic', 'firebase']) //, 'angular.filter'
 
   });
 
-    $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
-      console.log('$stateChangeStart');
+  $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+    console.log('$stateChangeStart');
       // UserFactory.redirectUser();
     });
 
-    $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
+  $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
 
-      console.log('$stateChangeSuccess');
+    console.log('$stateChangeSuccess');
 
-      UserFactory.getAuth();
+    UserFactory.getAuth();
 
-      $rootScope.goBack = function() {
-        $state.go(fromState, fromParams);
-      };
+    $rootScope.goBack = function() {
+      $state.go(fromState, fromParams);
+    };
 
-      $ionicPlatform.registerBackButtonAction(function(e) {
-        e.preventDefault();
-        if ( $state.current.name=="lists" ) {
-          ionic.Platform.exitApp();
-        }
-        else
-          $rootScope.goBack();
-      }, 101);
+    $ionicPlatform.registerBackButtonAction(function(e) {
+      e.preventDefault();
+      if ( $state.current.name=="lists" ) {
+        ionic.Platform.exitApp();
+      }
+      else
+        $rootScope.goBack();
+    }, 101);
 
-    });
+  });
 
-    $rootScope.$on("$routeChangeError", function(event, next, previous, error) {
+  $rootScope.$on("$routeChangeError", function(event, next, previous, error) {
       // We can catch the error thrown when the $requireAuth promise is rejected
       // and redirect the user back to the login page
       if (error === "AUTH_REQUIRED") {
