@@ -1,4 +1,4 @@
-angular.module('fourlists', ['ionic', 'firebase']) //, 'angular.filter'
+angular.module('fourlists', ['ionic', 'firebase', 'ngCordova']) //, 'angular.filter'
 
 
 .constant( 'APP_SETTINGS', {
@@ -6,7 +6,7 @@ angular.module('fourlists', ['ionic', 'firebase']) //, 'angular.filter'
 })
 
 
-.run( function( $rootScope, $window, $ionicPlatform, $state, UserFactory ) {
+.run( function( $rootScope, $window, $ionicPlatform, $state, UserFactory, $cordovaNetwork ) {
 
   $ionicPlatform.ready(function() {
     console.log('$ionicPlatform.ready');
@@ -27,10 +27,33 @@ angular.module('fourlists', ['ionic', 'firebase']) //, 'angular.filter'
 
   });
 
+
+  // Check internet conection
+  document.addEventListener("deviceready", function () {
+    console.log('deviceready');
+
+    var type = $cordovaNetwork.getNetwork();
+    var isOnline = $cordovaNetwork.isOnline();
+    var isOffline = $cordovaNetwork.isOffline();
+
+    $rootScope.$on('$cordovaNetwork:online', function(event, networkState){
+      console.log('networkState:', networkState);
+      var onlineState = networkState;
+      UserFactory.goOffline();
+    });
+
+    $rootScope.$on('$cordovaNetwork:offline', function(event, networkState){
+      console.log('networkState:', networkState);
+      var offlineState = networkState;
+      UserFactory.goOffline();
+    });
+
+  }, false);
+
+
   $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
     console.log('$stateChangeStart');
-      // UserFactory.redirectUser();
-    });
+  });
 
   $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
 

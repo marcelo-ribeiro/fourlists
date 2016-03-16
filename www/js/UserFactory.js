@@ -19,6 +19,14 @@
     };
 
 
+    function goOnline () {
+      Firebase.goOnline();
+    }
+    function goOffline () {
+      Firebase.goOffline();
+    }
+
+
     function getAuthRef () {
       return authObj;
     }

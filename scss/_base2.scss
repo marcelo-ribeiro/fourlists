@@ -12,6 +12,7 @@ html {
   background: $background-color;
   text-rendering: optimizeLegibility;
   -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 
   @if ($enable-grid) {
     &:before {
