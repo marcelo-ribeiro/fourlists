@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  function HomeController( $rootScope, TaskFactory, $state ) {
+  function HomeController( $rootScope, TaskFactory, $state, UserFactory ) {
 
     var vm = this;
 
@@ -32,6 +32,7 @@
       .finally(function() {
         vm.processing = false;
         console.log('finally get tasks');
+        UserFactory.goOffline();
       });
     };
 
@@ -51,7 +52,7 @@
     .module('fourlists')
     .controller('HomeController', HomeController);
 
-  HomeController.$inject = ['$rootScope', 'TaskFactory', '$state'];
+  HomeController.$inject = ['$rootScope', 'TaskFactory', '$state', 'UserFactory'];
 
   // angular.module('SharedModule')
   //  .config(['$translatePartialLoaderProvider', function ($translatePartialLoaderProvider) {

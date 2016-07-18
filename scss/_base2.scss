@@ -396,25 +396,28 @@ input[type='checkbox'] {
 
   &.--default {
     color: $text-medium-color;
-    background: rgba(#000, 0.1);
-    box-shadow: 0 2px 2px $black-200;
+    // background: rgba(#000, 0.1);
+    @extend %btn-shadow;
   }
 
   &.--primary {
-    color: #fff;
-    background: #567;
-    box-shadow: 0 2px 2px $black-200;
+    color: $button-primary-color;
+    background: $button-primary-background;
+    @extend %btn-shadow;
   }
 
   &.--icon {
     width: $button-width;
-    // height: $baseline*2;
     padding: 0;
     color: $text-light-color;
     border-radius: 50%;
 
     &:hover {
-      @extend .--default;
+      background: rgba(#000, 0.1);
     }
   }
+}
+
+%btn-shadow {
+  box-shadow: 0 2px 2px $black-200;
 }

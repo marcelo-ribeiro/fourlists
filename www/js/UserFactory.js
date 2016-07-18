@@ -11,6 +11,8 @@
 
 
     return {
+      goOffline: goOffline,
+      goOnline: goOnline,
       authRef: getAuthRef,
       googleLogin: googleLogin,
       logout: logout,
@@ -23,6 +25,7 @@
       Firebase.goOnline();
     }
     function goOffline () {
+      console.log('goOffline');
       Firebase.goOffline();
     }
 

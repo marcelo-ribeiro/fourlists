@@ -34,7 +34,9 @@ $screen-tablet: 768px !default;
 
 // BUTTON
 $button-height: 3.5rem;
-$button-width: 3.5rem;
+$button-width: 3.5rem; // for icon buttons
+$button-primary-color: #fff;
+$button-primary-background: #567;
 
 // FORM
 $input-height: 2.5rem;

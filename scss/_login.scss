@@ -1,9 +1,12 @@
 .login--container {
-  @include container(2rem);
+  @include container(2rem 1rem);
   text-align: center;
 }
 
 .login--title {
-  margin-top: 1rem;
+  @extend h3;
+  font-weight: 300;
+  font-family: Roboto Condensed;
+  letter-spacing: -0.5px;
   color: $text_medium_color;
 }

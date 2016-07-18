@@ -6,6 +6,70 @@ angular.module('fourlists', ['ionic', 'firebase', 'ngCordova']) //, 'angular.fil
 })
 
 
+.config(function ($stateProvider, $urlRouterProvider, $logProvider, $compileProvider, $ionicConfigProvider) {
+
+  $logProvider.debugEnabled(false);
+  $compileProvider.debugInfoEnabled(false);
+  $ionicConfigProvider.views.transition('none');
+  $ionicConfigProvider.scrolling.jsScrolling(false);
+  $ionicConfigProvider.views.maxCache(0);
+
+  $stateProvider
+
+  .state('login', {
+    url: "/login",
+    templateUrl: "templates/login.html",
+    controller: 'LoginController as vm'
+  })
+
+  .state('lists', {
+    url: "/",
+    templateUrl: "templates/home.html",
+    controller: 'HomeController as vm',
+    resolve: {
+      // controller will not be loaded until $waitForAuth resolves
+      // Auth refers to our $firebaseAuth wrapper in the example above
+      "currentAuth": ["UserFactory", function(UserFactory) {
+        // $waitForAuth returns a promise so the resolve waits for it to complete
+        return UserFactory.authRef().$requireAuth();
+      }]
+    }
+  })
+  .state('lists.list', {
+    url: "list/:listId",
+    params: {
+      listId: { value: '', squash: true }
+    }
+  })
+
+  .state('addTask', {
+    url: "addTask/:listId",
+    templateUrl: "templates/modal.html",
+    controller: 'ModalController as vm',
+    params: {
+      listId: { value: null, squash: true }
+    }
+  })
+
+  .state('editTask', {
+    url: "editTask/:taskId",
+    templateUrl: "templates/modal.html",
+    controller: 'ModalController as vm',
+    params: {
+      taskId: { value: '', squash: true }
+    }
+  })
+
+  .state('profile', {
+    url: "/profile",
+    templateUrl: "templates/profile.html",
+    controller: 'ProfileController as vm'
+  })
+
+  $urlRouterProvider.otherwise('/login');
+
+})
+
 .run( function( $rootScope, $window, $ionicPlatform, $state, UserFactory, $cordovaNetwork ) {
 
   $ionicPlatform.ready(function() {
@@ -83,70 +147,5 @@ angular.module('fourlists', ['ionic', 'firebase', 'ngCordova']) //, 'angular.fil
       $location.path("/login");
     }
   });
-
-})
-
-
-.config(function ($stateProvider, $urlRouterProvider, $logProvider, $compileProvider, $ionicConfigProvider) {
-
-  $logProvider.debugEnabled(false);
-  $compileProvider.debugInfoEnabled(false);
-  $ionicConfigProvider.views.transition('none');
-  $ionicConfigProvider.scrolling.jsScrolling(false);
-  $ionicConfigProvider.views.maxCache(0);
-
-  $stateProvider
-
-  .state('login', {
-    url: "/login",
-    templateUrl: "templates/login.html",
-    controller: 'LoginController as vm'
-  })
-
-  .state('lists', {
-    url: "/",
-    templateUrl: "templates/home.html",
-    controller: 'HomeController as vm',
-    resolve: {
-      // controller will not be loaded until $waitForAuth resolves
-      // Auth refers to our $firebaseAuth wrapper in the example above
-      "currentAuth": ["UserFactory", function(UserFactory) {
-        // $waitForAuth returns a promise so the resolve waits for it to complete
-        return UserFactory.authRef().$requireAuth();
-      }]
-    }
-  })
-  .state('lists.list', {
-    url: "list/:listId",
-    params: {
-      listId: { value: '', squash: true }
-    }
-  })
-
-  .state('addTask', {
-    url: "addTask/:listId",
-    templateUrl: "templates/modal.html",
-    controller: 'ModalController as vm',
-    params: {
-      listId: { value: null, squash: true }
-    }
-  })
-
-  .state('editTask', {
-    url: "editTask/:taskId",
-    templateUrl: "templates/modal.html",
-    controller: 'ModalController as vm',
-    params: {
-      taskId: { value: '', squash: true }
-    }
-  })
-
-  .state('profile', {
-    url: "/profile",
-    templateUrl: "templates/profile.html",
-    controller: 'ProfileController as vm'
-  })
-
-  $urlRouterProvider.otherwise('/login');
 
 });
