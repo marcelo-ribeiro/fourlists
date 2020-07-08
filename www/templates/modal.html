@@ -48,30 +48,28 @@
 
     </div>
 
-    <div class="form_footer">
-
-      <button
-      type="submit"
-      class="btn --primary"
-      ng-click="vm.save(vm.task)"
-      ng-disabled="addTaskForm.$invalid"
-      ng-if="vm.isEdit()">
-        <!-- <i class="btn--icon  material-icons md-24">cloud_upload</i> -->
-        <span class="btn--label">Salvar</span>
-      </button>
-
-      <button
-      type="submit"
-      class="btn --primary"
-      ng-click="vm.add(vm.task)"
-      ng-disabled="addTaskForm.$invalid"
-      ng-if="!vm.isEdit()">
-        <!-- <i class="btn--icon  material-icons md-24">cloud_upload</i> -->
-        <span class="btn--label">Adicionar</span>
-      </button>
-
-    </div>
-
   </main>
+
+  <footer class="form_footer">
+
+    <button
+    type="submit"
+    class="btn --primary"
+    ng-click="vm.save(vm.task)"
+    ng-disabled="addTaskForm.$invalid"
+    ng-if="vm.isEdit()">
+      <span class="btn--label">Salvar</span>
+    </button>
+
+    <button
+    type="submit"
+    class="btn --primary"
+    ng-click="vm.add(vm.task)"
+    ng-disabled="addTaskForm.$invalid"
+    ng-if="!vm.isEdit()">
+      <span class="btn--label">Adicionar</span>
+    </button>
+
+  </footer>
 
 </form>

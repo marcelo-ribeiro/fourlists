@@ -1,0 +1,16 @@
+
+// Criar apk debug
+ionic build
+
+// Criar apk release
+ionic build --release
+
+// Instalar apk debug no emulador do Genymotion
+adb install -r platforms/android/build/outputs/apk/android-debug.apk
+
+// Assinando o apk
+// senha: @85835954#
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore fourlists.keystore platforms/android/build/outputs/apk/android-release-unsigned.apk fourlists
+
+// Compactando o apk
+zipalign -v 4 platforms/android/build/outputs/apk/android-release-unsigned.apk Fourlists.apk

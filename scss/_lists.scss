@@ -1,10 +1,10 @@
 // VARIABLES
-$list-1-color: #FFCDD2;
-$list-2-color: #FFE0B2;
-$list-3-color: #FFF9C4;
-$list-4-color: #DCEDC8;
+$list-1-color: hsla(0,100%,85%,1);
+$list-2-color: hsla(40,100%,80%,1);
+$list-3-color: hsla(60,100%,80%,1);
+$list-4-color: hsla(100,100%,85%,1);
 
-$lists-col-gutter: 4px;
+$lists-col-gutter: 2px;
 
 
 // #LISTS
@@ -125,9 +125,9 @@ $lists-col-gutter: 4px;
 
 .list--container {
   @include container(0);
-  .list__opened & {
-    @include container-tablet;
-  }
+  // .list__opened & {
+  //   @include container-tablet;
+  // }
 }
 
 .list--title {
@@ -166,6 +166,10 @@ $lists-col-gutter: 4px;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+
+  .list__opened & {
+    font-size: 1rem;
+  }
 }
 
 

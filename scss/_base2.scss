@@ -90,8 +90,9 @@ a {
 
 .header {
   display: flex;
-  height: $header-height;
+  flex-shrink: 0;
   justify-content: space-between;
+  height: $header-height;
 
   > .group {
     display: flex;
@@ -111,8 +112,8 @@ a {
       font-family: 'Roboto Condensed';
       font-size: $header_title_font_size;
       font-weight: 500;
-      line-height: 1.25rem;
-      color: $text_light_color;
+      line-height: 1.5rem;
+      color: $text-medium-color;
       text-overflow: ellipsis;
       overflow: hidden;
       white-space: nowrap;
@@ -278,7 +279,7 @@ input[type='checkbox'] {
 }
 
 .form_footer {
-  display: flex;
+  @extend .footer;
   flex-direction: column;
   padding-top: $baseline;
   padding-bottom: $baseline;
